@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-export default function FormWidgets( {
-  initialValue,
-} ) {
+export default function FormWidgets( { initialValue } ) {
   const [ userName, setUserName ] = useState( initialValue ?? '' );
   const [ ucUserName, setUcUserName ] = useState( '' );
   const inputRef = useRef( null );
@@ -31,7 +29,6 @@ export default function FormWidgets( {
       inputRef.current?.value,
     );
 
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     inputRef.current?.value && setUcUserName( inputRef.current?.value );
   }
 
