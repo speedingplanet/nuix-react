@@ -5,6 +5,7 @@ import AddUser from './AddUser';
 import BrowseUsers from './BrowseUsers';
 import FindUsers from './FindUsers';
 import UserDetails from './UserDetailsTy';
+import UserBrowser from './UserBrowser';
 
 let routes = [
   { url: '/users/find', label: 'Find users', component: FindUsers },
@@ -12,6 +13,11 @@ let routes = [
   {
     url: '/users/browse',
     label: 'Browse users',
+    component: UserBrowser,
+  },
+  {
+    url: '/users/list',
+    label: 'List users',
     component: BrowseUsers,
   },
   {
@@ -44,7 +50,7 @@ export default function UsersView() {
         </nav>
       </div>
       {routes.map( ( route ) => (
-        <Route path={route.url}>
+        <Route path={route.url} key={route.url}>
           <route.component {...route.props} />
         </Route>
       ) )}
