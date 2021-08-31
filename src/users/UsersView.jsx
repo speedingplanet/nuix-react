@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { users } from '@speedingplanet/rest-server';
 import AddUser from './AddUser';
 import BrowseUsers from './BrowseUsers';
 import FindUsers from './FindUsers';
+import UserDetails from './UserDetails';
 
 export default function UsersView() {
   return (
@@ -24,6 +26,9 @@ export default function UsersView() {
             <li className="list-inline-item">
               <Link to="/users/browse">Browse users</Link>
             </li>
+            <li className="list-inline-item">
+              <Link to="/users/detail">User Details</Link>
+            </li>
           </ul>
         </nav>
       </div>
@@ -35,6 +40,13 @@ export default function UsersView() {
       </Route>
       <Route path="/users/browse">
         <BrowseUsers />
+      </Route>
+      <Route path="/users/detail">
+        <div className="row">
+          <div className="col-4 offset-4">
+            <UserDetails user={users[0]} />
+          </div>
+        </div>
       </Route>
     </section>
   );

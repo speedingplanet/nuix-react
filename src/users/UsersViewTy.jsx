@@ -1,13 +1,27 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { users } from '@speedingplanet/rest-server';
 import AddUser from './AddUser';
 import BrowseUsers from './BrowseUsers';
 import FindUsers from './FindUsers';
+import UserDetails from './UserDetailsTy';
 
 let routes = [
   { url: '/users/find', label: 'Find users', component: FindUsers },
-  { url: '/users/add', label: 'Add a users', component: AddUser },
-  { url: '/users/browse', label: 'Browse users', component: BrowseUsers },
+  { url: '/users/add', label: 'Add a user', component: AddUser },
+  {
+    url: '/users/browse',
+    label: 'Browse users',
+    component: BrowseUsers,
+  },
+  {
+    url: '/users/detail',
+    label: 'User details',
+    component: UserDetails,
+    props: {
+      user: users[3],
+    },
+  },
 ];
 
 export default function UsersView() {
@@ -31,7 +45,7 @@ export default function UsersView() {
       </div>
       {routes.map( ( route ) => (
         <Route path={route.url}>
-          <route.component />
+          <route.component {...route.props} />
         </Route>
       ) )}
     </section>
