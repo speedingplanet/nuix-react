@@ -5,10 +5,13 @@ export default function EventHandling() {
   const handleButtonClick = ( event ) => {
     console.log( 'You clicked on the button' );
     console.log( 'Event: ', event );
-    console.log( 'Event.currentTarget: ', event.currentTarget );
-    let target = event.target;
-    console.log( 'Event.target: ', target.firstChild );
+    console.log( 'event.target: ', event.target );
   };
+
+  // eslint-disable-next-line no-unused-vars
+  function logEvent( message ) {
+    console.log( 'Click happened: ', message );
+  }
 
   return (
     <section>
@@ -36,7 +39,7 @@ export default function EventHandling() {
               <button
                 className="btn btn-warning"
                 onClick={() => console.log( 'Inline event handler' )}
-                // onClick={( event ) => console.log( add( event.pageX, event.pageY ) )}
+                // onClick={() => logEvent( 'inline function' )}
               >
                 Click me
               </button>
