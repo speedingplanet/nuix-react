@@ -1,13 +1,7 @@
 import React from 'react';
 import BootstrapCard from '../components/BootstrapCard';
 
-function add( x, y ) {
-  return x + y;
-}
-
 export default function EventHandling() {
-  // function handleButtonClick( event: SyntheticEvent ) {
-  // function handleButtonClick( event: MouseEvent<HTMLButtonElement> ) {
   const handleButtonClick = ( event ) => {
     console.log( 'You clicked on the button' );
     console.log( 'Event: ', event );
@@ -41,8 +35,8 @@ export default function EventHandling() {
             <div className="card-body text-center">
               <button
                 className="btn btn-warning"
-                // onClick={() => console.log( 'Inline event handler' )}
-                onClick={( event ) => console.log( add( event.pageX, event.pageY ) )}
+                onClick={() => console.log( 'Inline event handler' )}
+                // onClick={( event ) => console.log( add( event.pageX, event.pageY ) )}
               >
                 Click me
               </button>

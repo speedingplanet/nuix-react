@@ -13,8 +13,6 @@ export default function ComponentState() {
             <button
               className="btn btn-primary"
               onClick={() => setCounter( counter + 1 )}
-              // onClick={() => setState( counter + 1 )}
-              // onClick={() => setState( { ...state, counter: state.counter + 1 } )}
             >
               Increment the counter
             </button>
