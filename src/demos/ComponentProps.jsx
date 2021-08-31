@@ -14,7 +14,10 @@ export default function ComponentProps() {
               aString="Hello"
               aNumber={5}
               aBoolean={true}
-              anObject={{ a: 'apple', b: 'banana' }}
+              anObject={{
+                a: 'apple',
+                b: 'banana',
+              }}
               anArray={[ 1, 2, 3 ]}
             />
           </BootstrapCard>
@@ -25,11 +28,33 @@ export default function ComponentProps() {
   );
 }
 
-function DisplayValue( props ) {
-  return <p>{props.foo}</p>;
+function PropsContainer( props ) {
+  let styleConfig = {
+    backgroundColor: props.aBoolean ? 'green' : 'red',
+    color: props.aBoolean ? 'white' : 'red',
+  };
+
+  return (
+    <ul className="list-group">
+      <li className="list-group-item">String: {props.aString}</li>
+      <li className="list-group-item">Number: {props.aNumber}</li>
+      <li className="list-group-item" style={styleConfig}>
+        Boolean: {props.aBoolean ? 'true' : 'false'}
+      </li>
+      {/* Try removing JSON.stringify to see what you get as a result */}
+      <li className="list-group-item">Object: {props.anObject}</li>
+      <li className="list-group-item">Array: {props.anArray}</li>
+    </ul>
+  );
 }
 
-function PropsContainer( { aString, aNumber, aBoolean, anObject, anArray } ) {
+function PropsContainerDestructured( {
+  aString,
+  aNumber,
+  aBoolean,
+  anObject,
+  anArray,
+} ) {
   return (
     <ul className="list-group">
       <li className="list-group-item">String: {aString}</li>
