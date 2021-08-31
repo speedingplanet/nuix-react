@@ -4,6 +4,7 @@ node_modules
 .eslintrc*
 .prettierrc*
 tmp/
+build/
 
 # Uncomment to never check anything into main/
 # main/*.html
