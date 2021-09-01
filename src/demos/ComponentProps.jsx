@@ -42,7 +42,9 @@ function PropsContainer( props ) {
         Boolean: {props.aBoolean ? 'true' : 'false'}
       </li>
       {/* Try removing JSON.stringify to see what you get as a result */}
-      <li className="list-group-item">Object: {props.anObject}</li>
+      <li className="list-group-item">
+        Object: {JSON.stringify( props.anObject )}
+      </li>
       <li className="list-group-item">Array: {props.anArray}</li>
     </ul>
   );

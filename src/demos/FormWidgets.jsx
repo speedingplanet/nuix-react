@@ -5,32 +5,20 @@ export default function FormWidgets( { initialValue } ) {
   const [ ucUserName, setUcUserName ] = useState( '' );
   const inputRef = useRef( null );
 
-  function handleUpdateText( event ) {
-    setUserName( event.currentTarget.value );
-  }
-
   function handleButtonClick() {
-    /*
-    if ( inputRef.current ) {
-      console.log(
-        'Current value of the uncontrolled component: ',
-        inputRef.current.value,
-      );
-    }
-
     console.log(
       'Current value of the uncontrolled component: ',
-      inputRef.current && inputRef.current.value,
-    );
-    */
-
-    console.log(
-      'Current value of the uncontrolled component: ',
-      inputRef.current?.value,
+      uncontrolledValue,
     );
 
-    inputRef.current?.value && setUcUserName( inputRef.current?.value );
+    uncontrolledValue && setUcUserName( uncontrolledValue );
   }
+
+  function handleUpdateText( event ) {
+    setUserName( event.target.value );
+  }
+
+  let uncontrolledValue = '';
 
   return (
     // section>.row>.col>.form-group>label+input:text.form-control
@@ -61,6 +49,7 @@ export default function FormWidgets( { initialValue } ) {
               type="text"
               id="uc-user-name"
               ref={inputRef}
+              onBlur={( e ) => ( uncontrolledValue = e.target.value )}
               className="form-control"
             />
             <button className="btn btn-info mt-2" onClick={handleButtonClick}>
