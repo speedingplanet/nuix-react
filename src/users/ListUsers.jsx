@@ -4,7 +4,7 @@ const BrowseUsers = () => {
   return (
     <div className="row">
       <div className="col">
-        <h3>Browse Users</h3>
+        <h3>List all Users</h3>
       </div>
     </div>
   );
