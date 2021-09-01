@@ -1,9 +1,24 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import AddUser from './AddUser';
-import UserBrowser from './UserBrowser';
-import FindUsers from './FindUsers';
 import ListUsers from './ListUsers';
+import FindUsers from './FindUsers';
+import UserBrowser from './UserBrowser';
+
+let routes = [
+  { url: '/users/find', label: 'Find users', component: FindUsers },
+  { url: '/users/add', label: 'Add a user', component: AddUser },
+  {
+    url: '/users/browse',
+    label: 'Browse users',
+    component: UserBrowser,
+  },
+  {
+    url: '/users/list',
+    label: 'List users',
+    component: ListUsers,
+  },
+];
 
 export default function UsersView() {
   return (
@@ -16,33 +31,19 @@ export default function UsersView() {
       <div className="row">
         <nav className="col">
           <ul className="list-inline">
-            <li className="list-inline-item">
-              <Link to="/users/add">Add a user</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/users/find">Find users</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/users/browse">Browse users</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/users/list">List all users</Link>
-            </li>
+            {routes.map( ( route ) => (
+              <li className="list-inline-item" key={route.url}>
+                <Link to={route.url}>{route.label}</Link>
+              </li>
+            ) )}
           </ul>
         </nav>
       </div>
-      <Route path="/users/add">
-        <AddUser />
-      </Route>
-      <Route path="/users/find">
-        <FindUsers />
-      </Route>
-      <Route path="/users/browse">
-        <UserBrowser />
-      </Route>
-      <Route path="/users/list">
-        <ListUsers />
-      </Route>
+      {routes.map( ( route ) => (
+        <Route path={route.url} key={route.url}>
+          <route.component {...route.props} />
+        </Route>
+      ) )}
     </section>
   );
 }

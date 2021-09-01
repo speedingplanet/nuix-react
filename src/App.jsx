@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import DemosView from './demos/DemosView';
 import TransactionsView from './transactions/TransactionsView';
-import UsersView from './users/UsersViewTy';
+import UsersView from './users/UsersView';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BrowseUsers = () => {
+const ListUsers = () => {
   return (
     <div className="row">
       <div className="col">
@@ -10,4 +10,4 @@ const BrowseUsers = () => {
   );
 };
 
-export default BrowseUsers;
+export default ListUsers;
