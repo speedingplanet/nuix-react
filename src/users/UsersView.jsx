@@ -1,15 +1,27 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
+import { users } from '@speedingplanet/rest-server';
 import AddUser from './AddUser';
 import ListUsers from './ListUsers';
-import FindUsers from './FindUsers';
 import UserBrowser from './UserBrowser';
+import FindUsersContainer from './FindUsersContainer';
+
+const columns = [
+  {
+    field: 'displayName',
+    label: 'Display Name',
+  },
+  {
+    field: 'address.city',
+    label: 'City',
+  },
+  {
+    field: 'address.state',
+    label: 'State',
+  },
+];
 
 export default function UsersView() {
-  const handleSearchDisplayName = ( searchCriteria ) => {
-    console.log( 'UsersView: Searching on ', searchCriteria );
-  };
-
   const handleCreateUser = ( user ) => {
     console.log( 'UsersView: user to add: ', user );
   };
@@ -18,9 +30,10 @@ export default function UsersView() {
     {
       url: '/users/find',
       label: 'Find users',
-      component: FindUsers,
+      component: FindUsersContainer,
       props: {
-        searchDisplayName: handleSearchDisplayName,
+        users,
+        columns,
       },
     },
     {
@@ -40,6 +53,9 @@ export default function UsersView() {
       url: '/users/list',
       label: 'List users',
       component: ListUsers,
+      props: {
+        users,
+      },
     },
   ];
 
