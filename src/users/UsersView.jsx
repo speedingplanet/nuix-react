@@ -5,22 +5,22 @@ import ListUsers from './ListUsers';
 import FindUsers from './FindUsers';
 import UserBrowser from './UserBrowser';
 
-let routes = [
-  { url: '/users/find', label: 'Find users', component: FindUsers },
-  { url: '/users/add', label: 'Add a user', component: AddUser },
-  {
-    url: '/users/browse',
-    label: 'Browse users',
-    component: UserBrowser,
-  },
-  {
-    url: '/users/list',
-    label: 'List users',
-    component: ListUsers,
-  },
-];
-
 export default function UsersView() {
+  let routes = [
+    { url: '/users/find', label: 'Find users', component: FindUsers },
+    { url: '/users/add', label: 'Add a user', component: AddUser },
+    {
+      url: '/users/browse',
+      label: 'Browse users',
+      component: UserBrowser,
+    },
+    {
+      url: '/users/list',
+      label: 'List users',
+      component: ListUsers,
+    },
+  ];
+
   return (
     <section>
       <div className="row">
