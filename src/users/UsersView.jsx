@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { users } from '@speedingplanet/rest-server';
 import AddUser from './AddUser';
 import ListUsers from './ListUsers';
 import UserBrowser from './UserBrowser';
@@ -21,7 +20,32 @@ const columns = [
   },
 ];
 
+async function fetchUsers( setUsers ) {
+  try {
+    let response = await fetch( 'http://localhost:8000/api/zippay/v1/users' );
+    let users = await response.json();
+    setUsers( users );
+  } catch ( err ) {
+    console.error( err );
+  }
+}
+
 export default function UsersView() {
+  const [ users, setUsers ] = useState( [] );
+
+  /*
+  useEffect( () => {
+    fetch( 'http://localhost:8000/api/zippay/v1/users ' )
+      .then( ( response ) => response.json() )
+      .then( ( users ) => setUsers( users ) )
+      .catch( console.error );
+  }, [] );
+  */
+
+  useEffect( () => {
+    fetchUsers( setUsers );
+  }, [] );
+
   const handleCreateUser = ( user ) => {
     console.log( 'UsersView: user to add: ', user );
   };
@@ -75,6 +99,7 @@ export default function UsersView() {
       <div className="row">
         <div className="col">
           <h2>Users</h2>
+          <p>There are {users.length} users.</p>
         </div>
       </div>
       <div className="row">
