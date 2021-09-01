@@ -2,7 +2,7 @@
 
 ## Part 1
 
-### BrowseUsers.jsx
+### ListUsers.jsx
 
 Import `users` from @speedingplanet/rest-server. You may also want to import the `User` interface.
 
@@ -18,23 +18,28 @@ STOP HERE.
 
 ## Part 2
 
-### UsersTable.jsx
+### UsersGrid.jsx
 
-Create a new file, `UsersTable.jsx`. It should be a component that takes the following properties:
+Create a new file, `UsersGrid.jsx`. It should be a component that takes the following properties:
 
 - users: An array of users
 - selectUser: An event that selects a User
 
-### BrowseUsers.jsx
+### ListUsers.jsx
 
-Extract the `<table>` portion into the new component `UsersTable`.  
-Replace the '<table>' with `UsersTable`. 
+Takes two familiar properties: 
+- users: An array of users
+- selectUser: An event that selects a User
+
+Extract the `<table>` portion into the new component `UsersGrid`.  
+Replace the '<table>' with `UsersGrid`. 
+Pass the props `users` and `selectUser` to `UsersGrid`.
 
 ### UsersView.jsx
 
-Change the event handler for `searchDisplayName`. Instead of logging to the console or the DOM, it should now create a copy of the `users` array, filtered by the value from `searchDisplayName`. Render a `UsersTable` under `FindUsers` with the results from the search.  
+Change the event handler for `searchDisplayName`. Instead of logging to the console or the DOM, it should now create a copy of the `users` array, filtered by the value from `searchDisplayName`. Render a `UsersGrid` under `FindUsers` with the results from the search.  You can either render a container component (that contains both `FindUsers` and `UsersGrid`) or you can make `UsersGrid` part of `FindUsers`. 
 
-Should the `UsersTable` appear when `FindUsers` is first rendered? If not, how could you hide it? (CSS? HTML attribute? JSX/React?) And, how can you change the state (hint!) of `UsersView` so that `UsersTable` appears where there are results to display?
+Should the `UsersGrid` appear when `FindUsers` is first rendered? If not, how could you hide it? (CSS? HTML attribute? JSX/React?) And, how can you change the state (hint!) of `UsersView` so that `UsersGrid` appears where there are results to display?
 
 STOP HERE.
 
@@ -57,24 +62,27 @@ STOP HERE.
 
 ## Part 5
 
-Overall, we are going to change the `FindUsers` search from being against a static `users` array to running against the REST server.
+Overall, we are going to consolidate `users` into `UsersView`. 
 
 ### UsersView.jsx
 
 Remove the import of the `users` array.
-Update the event handler for `searchDisplayName`. Instead of searching against `users`, query http://localhost:8000/api/zippay/v1/users for matching users. You can do this two ways:
+Using `useEffect`, query http://localhost:8000/api/zippay/v1/users or use `dao.findAllUsers` to find all the users.
+Pass the users as appropriate to `FindUsers` `UserBrowser`, and `ListUsers`.
 
-- Directly alter the URL: 
-  - /api/zippay/v1/users?displayName=whatever (exact)
-  - /api/zippay/v1/users?displayName_like=whatever (case-insensitive partial match)
-- Pass parameters as part of the `fetch` request
-  - You would use URLSearchParams: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-  - StackOverflow example: https://stackoverflow.com/a/58437909
+### FindUsers.jsx
 
-Use either Promises or async/await as you see fit.  
+Remove any reference to importing `users` from @speedingplanet/rest-server.
+Update props as needed.
 
-Docs for json-server can be found here: https://github.com/typicode/json-server
+### ListUsers.jsx
 
-Check to see that your code successfully fetches.
+Remove any reference to importing `users` from @speedingplanet/rest-server.
+Update props as needed.
+
+### UserBrowser.jsx
+
+Remove any reference to importing `users` from @speedingplanet/rest-server.
+Update props as needed.
 
 STOP HERE. 

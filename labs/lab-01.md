@@ -75,13 +75,15 @@ When the "Find Users" button is clicked on, pass the search term to its parent c
 
 ### UsersView.tsx
 
-Create an event handler, and attach it to `FindUsers`'s `searchDisplayName` event. The event handler can log the search term to the console or to the DOM, your choice.
+Create an event handler, and attach it to `FindUsers`'s `searchDisplayName` event. The event handler can log the search term to the console or to the DOM, your choice. Remember to use the `props` pattern, since we're looping over routing configurations. 
 
 Test your component
 
 STOP HERE.
 
 ## Part 7: Putting it all together
+
+COMPLETED, but let's review.
 
 In `AddUser.jsx`, set up form fields to capture the following information
 
