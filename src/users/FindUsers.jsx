@@ -7,7 +7,7 @@ const initialState = {
   displayName: '',
 };
 
-const FindUsers = () => {
+const FindUsers = ( { searchDisplayName } ) => {
   const [ searchCriteria, setSearchCriteria ] = useState( initialState );
 
   return (
@@ -36,7 +36,7 @@ const FindUsers = () => {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={() => console.log( `Searching for ${searchCriteria}` )}
+              onClick={() => searchDisplayName( searchCriteria )}
             >
               Search
             </button>

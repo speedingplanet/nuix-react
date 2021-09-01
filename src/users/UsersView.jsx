@@ -6,9 +6,31 @@ import FindUsers from './FindUsers';
 import UserBrowser from './UserBrowser';
 
 export default function UsersView() {
+  const handleSearchDisplayName = ( searchCriteria ) => {
+    console.log( 'UsersView: Searching on ', searchCriteria );
+  };
+
+  const handleCreateUser = ( user ) => {
+    console.log( 'UsersView: user to add: ', user );
+  };
+
   let routes = [
-    { url: '/users/find', label: 'Find users', component: FindUsers },
-    { url: '/users/add', label: 'Add a user', component: AddUser },
+    {
+      url: '/users/find',
+      label: 'Find users',
+      component: FindUsers,
+      props: {
+        searchDisplayName: handleSearchDisplayName,
+      },
+    },
+    {
+      url: '/users/add',
+      label: 'Add a user',
+      component: AddUser,
+      props: {
+        createUser: handleCreateUser,
+      },
+    },
     {
       url: '/users/browse',
       label: 'Browse users',
@@ -20,6 +42,17 @@ export default function UsersView() {
       component: ListUsers,
     },
   ];
+
+  /*
+  forEach((item, index, array) => void)
+  some((item, index, array) => boolean) / every()
+  map((item, index, array) => array item)
+  filter((item, index, array) => boolean)
+  find((item, index, array) => boolean): find the first match
+  findIndex((item, index, array) => boolean): find the index of the first match
+
+  reduce((accumulatedValue, currentValue, index, array) => nextValue, initialValue)
+  */
 
   return (
     <section>

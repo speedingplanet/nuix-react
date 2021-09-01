@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import lodashSet from 'lodash-es/set';
 
+/*
+{
+  displayName: 'Whatever',
+  address: {
+    street: 'Wherever',
+    state: 'NJ',
+    country: 'USA'
+  }
+}
+*/
+
 const AddUser = ( { createUser, buttonDisabled } ) => {
   const handleSubmit = ( event ) => {
+    event.preventDefault();
     const data = new FormData( event.target );
     let formState = {};
     for ( let [ field, value ] of data ) {
       lodashSet( formState, field, value );
     }
-    event.preventDefault();
     createUser( formState );
   };
 
