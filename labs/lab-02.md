@@ -4,7 +4,7 @@
 
 ### ListUsers.jsx
 
-Import `users` from @speedingplanet/rest-server. You may also want to import the `User` interface.
+Import `users` from @speedingplanet/rest-server.
 
 Iterate over `users` and generate an HTML table from the results. Display the following fields in the table:
 - Display Name
@@ -12,7 +12,12 @@ Iterate over `users` and generate an HTML table from the results. Display the fo
 - City
 - State
 
-Navigate to /users/browse. Make sure that the list shows up as expected.
+If you're using Bootstrap, it has a few classes that make tables render nicely:
+- table (yes, the class is actually "table")
+- table-hover
+- table-striped
+
+Navigate to /users/list. Make sure that the list shows up as expected.
 
 STOP HERE.
 
